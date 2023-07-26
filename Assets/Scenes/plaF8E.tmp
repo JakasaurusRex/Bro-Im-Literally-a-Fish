@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4705xw6d6u0r"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/Feesh.gd" id="1_civr0"]
+[ext_resource type="PackedScene" uid="uid://cyhdh4ljemvp6" path="res://Assets/Models/feesh.blend" id="2_0m3ef"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dp558"]
+radius = 0.83195
+height = 1.6639
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_civr0")
+
+[node name="feesh" parent="." instance=ExtResource("2_0m3ef")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_dp558")
+
+[node name="SpringArm" type="SpringArm3D" parent="."]
+collision_mask = 2
+spring_length = 7.0
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm"]
+current = true

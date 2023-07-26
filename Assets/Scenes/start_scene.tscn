@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://chpk3u2gdq7rc"]
+
+[ext_resource type="PackedScene" uid="uid://c4705xw6d6u0r" path="res://Assets/Scenes/player.tscn" id="1_bk3db"]
+[ext_resource type="Texture2D" uid="uid://blwj0elmqrbf5" path="res://Assets/Textures/sand.png" id="1_wswxl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k316i"]
+albedo_texture = ExtResource("1_wswxl")
+
+[node name="Start Scene" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.385536, -2.96671, 0.197166)
+use_collision = true
+collision_layer = 3
+collision_mask = 3
+size = Vector3(50.0566, 2.74898, 124.384)
+material = SubResource("StandardMaterial3D_k316i")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_bk3db")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.370757, 1.52092, 3.04716)
+
+[node name="feesh" parent="CharacterBody3D/Pivot" index="0"]
+transform = Transform3D(-1.74846e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, -1.74846e-08, -0.01931, -0.0135293, 0.00981474)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5.45585, 47.1069, 2.35353)
+light_energy = 0.543
+
+[editable path="CharacterBody3D"]

@@ -1,0 +1,8 @@
+res://CameraJoint.gd
+res://Feesh.gd
+res://Assets/Scenes/player.tscn
+res://Assets/Scripts/Feesh.gd
+res://Assets/Scenes/start_scene.tscn
+res://Assets/Scripts/CameraJoint.gd
+res://MainMenu.gd
+res://Assets/Scenes/main_menu.tscn

@@ -1,0 +1,16 @@
+Timer
+AnimationPlayer
+Sprite2D
+TextureRect
+Label
+TextEdit
+Button
+VBoxContainer
+DirectionalLight3D
+Marker3D
+CollisionShape3D
+OmniLight3D
+Camera3D
+SpringArm3D
+CharacterBody3D
+CSGBox3D
