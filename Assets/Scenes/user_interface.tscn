@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3v3ot0cf46xy"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/user_interface.gd" id="1_i6sjc"]
+[ext_resource type="Texture2D" uid="uid://du5pggi85p230" path="res://Assets/Textures/carrot_icon.png" id="1_t16vy"]
+[ext_resource type="Texture2D" uid="uid://s3uanauvebxq" path="res://Assets/Textures/bebe_carrot_icon.png" id="2_8551e"]
+[ext_resource type="Texture2D" uid="uid://dgc7ic6whaikv" path="res://Assets/Textures/number_sheet.png" id="3_7m3gd"]
+
+[sub_resource type="Animation" id="Animation_aunpe"]
+resource_name = "fade_to_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dcxa8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cf34s"]
+resource_name = "fade_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lk3r5"]
+_data = {
+"RESET": SubResource("Animation_dcxa8"),
+"fade_to_black": SubResource("Animation_cf34s"),
+"fade_to_normal": SubResource("Animation_aunpe")
+}
+
+[node name="UserInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i6sjc")
+
+[node name="carrotIcon" type="Sprite2D" parent="."]
+position = Vector2(593, 31)
+scale = Vector2(0.765625, 0.783026)
+texture = ExtResource("1_t16vy")
+
+[node name="bebeCarrotIcon" type="Sprite2D" parent="."]
+position = Vector2(473, 31)
+scale = Vector2(0.882812, 0.917432)
+texture = ExtResource("2_8551e")
+
+[node name="carrotRightNum" type="Sprite2D" parent="."]
+position = Vector2(548.75, 32.5)
+scale = Vector2(0.820313, 0.796875)
+texture = ExtResource("3_7m3gd")
+hframes = 10
+
+[node name="carrotLeftNum" type="Sprite2D" parent="."]
+position = Vector2(517, 33)
+scale = Vector2(0.828125, 0.8125)
+texture = ExtResource("3_7m3gd")
+hframes = 10
+
+[node name="bebeCarrotRightNum" type="Sprite2D" parent="."]
+position = Vector2(430, 33)
+scale = Vector2(0.828125, 0.8125)
+texture = ExtResource("3_7m3gd")
+hframes = 10
+
+[node name="bebeCarrotMiddleNum" type="Sprite2D" parent="."]
+position = Vector2(399, 33)
+scale = Vector2(0.828125, 0.8125)
+texture = ExtResource("3_7m3gd")
+hframes = 10
+
+[node name="bebeCarrotLeftNum" type="Sprite2D" parent="."]
+position = Vector2(367, 33)
+scale = Vector2(0.828125, 0.8125)
+texture = ExtResource("3_7m3gd")
+hframes = 10
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 649.0
+offset_bottom = 486.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_lk3r5")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

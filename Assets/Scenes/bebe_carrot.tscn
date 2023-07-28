@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmd4bbbfpa2tm"]
+
+[ext_resource type="PackedScene" uid="uid://dn78lo31r3agr" path="res://Assets/Models/bebe_carrot.blend" id="1_1gxus"]
+[ext_resource type="Script" path="res://Assets/Scripts/bebe_carrot.gd" id="1_ev4w1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5dlwp"]
+size = Vector3(0.74359, 0.755768, 1.05844)
+
+[node name="Node3D" type="Area3D"]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("1_ev4w1")
+
+[node name="bebe_carrot" parent="." instance=ExtResource("1_1gxus")]
+transform = Transform3D(0.84, 0, 0, 0, -0.734681, -0.40724, 0, 0.40724, -0.734681, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_5dlwp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

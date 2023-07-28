@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhf6xtrk6grb"]
+
+[ext_resource type="PackedScene" uid="uid://nphii6woaeqk" path="res://Assets/Models/carrot.blend" id="1_436dp"]
+[ext_resource type="Script" path="res://Assets/Scripts/carrot.gd" id="1_a8elb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_45s5j"]
+size = Vector3(1, 1, 5.31305)
+
+[node name="Node3D" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.02599, 0)
+script = ExtResource("1_a8elb")
+
+[node name="carrot" parent="." instance=ExtResource("1_436dp")]
+transform = Transform3D(0.705, 0, 0, 0, 0.705, 0, 0, 0, 0.705, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_45s5j")

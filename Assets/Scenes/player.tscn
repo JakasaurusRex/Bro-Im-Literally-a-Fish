@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cyhdh4ljemvp6" path="res://Assets/Models/feesh.blend" id="2_0m3ef"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dp558"]
-radius = 0.83195
-height = 1.6639
+radius = 0.96599
+height = 1.93198
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_civr0")
