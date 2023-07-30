@@ -1,24 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3v3ot0cf46xy"]
+[gd_scene load_steps=10 format=3 uid="uid://c3v3ot0cf46xy"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/user_interface.gd" id="1_i6sjc"]
 [ext_resource type="Texture2D" uid="uid://du5pggi85p230" path="res://Assets/Textures/carrot_icon.png" id="1_t16vy"]
 [ext_resource type="Texture2D" uid="uid://s3uanauvebxq" path="res://Assets/Textures/bebe_carrot_icon.png" id="2_8551e"]
 [ext_resource type="Texture2D" uid="uid://dgc7ic6whaikv" path="res://Assets/Textures/number_sheet.png" id="3_7m3gd"]
-
-[sub_resource type="Animation" id="Animation_aunpe"]
-resource_name = "fade_to_normal"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
+[ext_resource type="Texture2D" uid="uid://dc2anp1jjwaqv" path="res://Assets/Textures/caughtfeesh.png" id="5_bb832"]
 
 [sub_resource type="Animation" id="Animation_dcxa8"]
 length = 0.001
@@ -48,6 +34,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aunpe"]
+resource_name = "fade_to_normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lk3r5"]
@@ -94,14 +95,32 @@ scale = Vector2(0.828125, 0.8125)
 texture = ExtResource("3_7m3gd")
 hframes = 10
 
+[node name="fishRightNum" type="Sprite2D" parent="."]
+position = Vector2(274, 34)
+scale = Vector2(0.828125, 0.8125)
+texture = ExtResource("3_7m3gd")
+hframes = 10
+
 [node name="bebeCarrotMiddleNum" type="Sprite2D" parent="."]
 position = Vector2(399, 33)
 scale = Vector2(0.828125, 0.8125)
 texture = ExtResource("3_7m3gd")
 hframes = 10
 
+[node name="fishMiddleNum" type="Sprite2D" parent="."]
+position = Vector2(241, 34)
+scale = Vector2(0.828125, 0.8125)
+texture = ExtResource("3_7m3gd")
+hframes = 10
+
 [node name="bebeCarrotLeftNum" type="Sprite2D" parent="."]
 position = Vector2(367, 33)
+scale = Vector2(0.828125, 0.8125)
+texture = ExtResource("3_7m3gd")
+hframes = 10
+
+[node name="fishLeftNum" type="Sprite2D" parent="."]
+position = Vector2(208, 35)
 scale = Vector2(0.828125, 0.8125)
 texture = ExtResource("3_7m3gd")
 hframes = 10
@@ -117,5 +136,43 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_lk3r5")
 }
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 81.0
+offset_top = 307.0
+offset_right = 550.0
+offset_bottom = 438.0
+mouse_filter = 1
+color = Color(0.239216, 0.239216, 0.239216, 0.121569)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect2"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 27.0
+offset_right = 442.0
+offset_bottom = 102.0
+text = "Bro I'm literally a fish"
+fit_content = true
+scroll_active = false
+
+[node name="Interaction Label" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 462.0
+offset_top = 426.0
+offset_right = 626.0
+offset_bottom = 466.0
+text = "Press F to Interact"
+fit_content = true
+scroll_active = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Caughtfeesh" type="Sprite2D" parent="."]
+position = Vector2(318, 32)
+scale = Vector2(0.921874, 0.941079)
+texture = ExtResource("5_bb832")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

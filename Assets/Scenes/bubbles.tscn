@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnkla3yxt4rp3"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/bubbles.gd" id="1_xqc2b"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_asomo"]
+emission_shape = 1
+emission_sphere_radius = 6.24
+direction = Vector3(0, 1, 0)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 3.77
+initial_velocity_max = 55.27
+linear_accel_min = -0.55
+linear_accel_max = 20.73
+scale_min = 500.0
+scale_max = 1000.0
+hue_variation_min = -0.28
+hue_variation_max = 0.23
+anim_speed_max = 1.45
+
+[sub_resource type="Gradient" id="Gradient_ijkoc"]
+colors = PackedColorArray(1, 1, 1, 1, 0.0862745, 0.921569, 0.921569, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x7t66"]
+gradient = SubResource("Gradient_ijkoc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xjok1"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.305882, 0.745098, 1, 0.988235)
+albedo_texture = SubResource("GradientTexture2D_x7t66")
+metallic = 0.4
+roughness = 0.0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="SphereMesh" id="SphereMesh_uqg1v"]
+material = SubResource("StandardMaterial3D_xjok1")
+radius = 10.0
+height = 20.0
+
+[node name="bubbles" type="Node3D"]
+script = ExtResource("1_xqc2b")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 500
+randomness = 0.45
+collision_base_size = 0.0
+process_material = SubResource("ParticleProcessMaterial_asomo")
+draw_pass_1 = SubResource("SphereMesh_uqg1v")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

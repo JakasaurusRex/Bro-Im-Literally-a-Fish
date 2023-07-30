@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4705xw6d6u0r"]
+[gd_scene load_steps=5 format=3 uid="uid://c4705xw6d6u0r"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/Feesh.gd" id="1_civr0"]
 [ext_resource type="PackedScene" uid="uid://cyhdh4ljemvp6" path="res://Assets/Models/feesh.blend" id="2_0m3ef"]
+[ext_resource type="PackedScene" uid="uid://w4fldkc64mcx" path="res://Assets/Models/hatshop.blend" id="3_7rutf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dp558"]
 radius = 0.96599
 height = 1.93198
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
+collision_layer = 66313
+collision_mask = 66313
 script = ExtResource("1_civr0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -28,3 +31,22 @@ far = 200.0
 
 [node name="feesh" parent="Pivot" instance=ExtResource("2_0m3ef")]
 transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 0, 0, 0)
+
+[node name="Sphere_001" parent="Pivot/feesh" index="8"]
+visible = false
+
+[node name="Cylinder" parent="Pivot/feesh" index="9"]
+visible = false
+
+[node name="hatshop" parent="Pivot/feesh" instance=ExtResource("3_7rutf")]
+transform = Transform3D(-1.87085e-08, 0, 0.428, 0, 0.428, 0, -0.428, 0, -1.87085e-08, 0.0420938, 2.32643, -0.00341045)
+visible = false
+
+[node name="Cube" parent="Pivot/feesh/hatshop" index="1"]
+visible = false
+
+[node name="Cube_001" parent="Pivot/feesh/hatshop" index="2"]
+visible = false
+
+[editable path="Pivot/feesh"]
+[editable path="Pivot/feesh/hatshop"]

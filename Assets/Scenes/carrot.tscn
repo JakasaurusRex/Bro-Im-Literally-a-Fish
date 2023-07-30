@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhf6xtrk6grb"]
+[gd_scene load_steps=7 format=3 uid="uid://bhf6xtrk6grb"]
 
 [ext_resource type="PackedScene" uid="uid://nphii6woaeqk" path="res://Assets/Models/carrot.blend" id="1_436dp"]
 [ext_resource type="Script" path="res://Assets/Scripts/carrot.gd" id="1_a8elb"]
@@ -6,8 +6,71 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_45s5j"]
 size = Vector3(1, 1, 5.31305)
 
+[sub_resource type="Animation" id="Animation_1snyp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("carrot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("carrot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.705, 0.705, 0.705)]
+}
+
+[sub_resource type="Animation" id="Animation_cs1y4"]
+resource_name = "shrink"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("carrot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("carrot:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.705, 0.705, 0.705), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_terja"]
+_data = {
+"RESET": SubResource("Animation_1snyp"),
+"shrink": SubResource("Animation_cs1y4")
+}
+
 [node name="Node3D" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.02599, 0)
+transform = Transform3D(6, 0, 0, 0, -2.62268e-07, 6, 0, -6, -2.62268e-07, 0, 0, 0)
+collision_layer = 512
+collision_mask = 512
 script = ExtResource("1_a8elb")
 
 [node name="carrot" parent="." instance=ExtResource("1_436dp")]
@@ -15,3 +78,11 @@ transform = Transform3D(0.705, 0, 0, 0, 0.705, 0, 0, 0, 0.705, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_45s5j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_terja")
+}
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
