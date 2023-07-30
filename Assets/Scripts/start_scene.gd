@@ -114,3 +114,23 @@ func left_fishing(body_rid, body, body_shape_index, local_shape_index):
 	if(player.readyToFish):
 		UI.leaving_interaction()
 		player.leaving_fishing()
+		
+func _on_user_interface_change_to_fishing():
+	fishingCam.visible = true
+	fishingCam.current = true
+
+
+func _on_fishing_cam_lost_fish_signal():
+	UI.lost_fish()
+	larryCam.current = true
+
+
+func _on_fishing_cam_scared_fish_signal():
+	UI.scared_fish()
+	larryCam.current = true
+
+
+func _on_fishing_cam_left_fishing():
+	player._on_user_interface_over()
+	UI.interaction()
+	player.approaching_fishing()

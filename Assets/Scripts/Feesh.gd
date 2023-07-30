@@ -35,7 +35,7 @@ var sign = false
 var larry = false
 var fishing = false
 
-@export var currentHat = "gentle"
+@export var currentHat = ""
 
 
 func _ready():
@@ -61,6 +61,10 @@ func _physics_process(delta):
 		reading_sign()
 	elif larry and Input.is_action_just_pressed("interact"):
 		talked_to_larry()
+	elif fishing and Input.is_action_just_pressed("interact"):
+		fishing = false
+		ui.leaving_interaction()
+		opened_fishing()
 		
 	var input_vector = get_input_vector()
 	var direction = get_direction(input_vector)
@@ -301,3 +305,8 @@ func approaching_fishing():
 
 func leaving_fishing():
 	fishing = false
+
+func opened_fishing():
+	canMove = false
+	velocity = Vector3.ZERO
+	$".."._on_user_interface_change_to_fishing()

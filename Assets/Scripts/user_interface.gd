@@ -37,6 +37,8 @@ var npc_bool = false
 var larry1_text = ["Hey kid, are ye lookin to fish?", "Aren't we underwater", "Ye what abouts that", "Nevermind...", "Have my spare rod I have. All ya hafta do is walk up to my dock over here, cast your rod and wait for a bite.", "What is gonna bite the hook", "Once you have a bite yer gonna wanna reel er in with the crank, make sure to reel the same speed as the fish or you'll lose em", "Wait I'm catching fish", "If you have any questions, I can't answer them but bring me yer haul and I'll give you a couple bebe carrots for them", "Yarp"]
 var larry1_index = 0
 
+@export var messed_up_fish = false
+
 @onready var interaction_label = $"Interaction Label"
 
 # Called when the node enters the scene tree for the first time.
@@ -48,6 +50,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if textrect.visible and Input.is_action_just_pressed("enter"):
+		if(messed_up_fish):
+			messed_up_fish = false
+			emit_signal("over")
+			return
 		if(pond_scene):
 			pond_scene = false
 			emit_signal("over")
@@ -207,4 +213,16 @@ func start_larry1_scene():
 	textrect.visible = true
 	textbox.clear()
 	textbox.add_text(larry1_text[larry1_index])
+
+func lost_fish():
+	messed_up_fish = true
+	textrect.visible = true
+	textbox.clear()
+	textbox.add_text("Ya lost da fish, try reelin in when you see da bobber go down and get that hook in")
+
+func scared_fish():
+	messed_up_fish = true
+	textrect.visible = true
+	textbox.clear()
+	textbox.add_text("Ya scared da fish, only start reely reeling when you get the fish on the hook or it'll scram")
 	

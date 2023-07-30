@@ -79,8 +79,8 @@ noise = SubResource("FastNoiseLite_n4wjt")
 [resource]
 render_priority = 0
 shader = SubResource("Shader_qkk3m")
-shader_parameter/albedo = Color(0, 0.498039, 0.662745, 1)
-shader_parameter/albedo2 = Color(0, 0.282353, 0.337255, 1)
+shader_parameter/albedo = Color(0, 0.431373, 0.760784, 1)
+shader_parameter/albedo2 = Color(0, 0.580392, 0.764706, 1)
 shader_parameter/metallic = 0.0
 shader_parameter/roughness = 0.015
 shader_parameter/wave_direction = Vector2(2, 0)
