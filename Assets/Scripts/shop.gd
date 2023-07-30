@@ -1,9 +1,11 @@
 extends Control
 
-@export var ownGentle = false
-@export var ownStraw = false
-@export var ownBass = false
-@export var ownFear = false
+signal all_hats
+
+@export var ownGentle = true
+@export var ownStraw = true
+@export var ownBass = true
+@export var ownFear = true
 
 @onready var gentleButton = $Items/Gentle/Button
 @onready var strawButton = $Items/Straw/Button
@@ -11,14 +13,16 @@ extends Control
 @onready var fearButton = $Items/Fear/Button
 
 @onready var textbox = $TextRect/TextBox
-
+@onready var timer = $Timer
 @export var equipGentle = false
 @export var equipStraw = false
 @export var equipBass = false
-@export var equipFear = false
+@export var equipFear = false 
 
 @export var bebes = 0
-@export var fishes = 0	
+@export var fishes = 0
+
+var seen_cutscene = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,6 +33,13 @@ func entered():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if(visible and !seen_cutscene and (ownGentle and ownBass and ownStraw and ownFear)):
+		emit_signal("all_hats")
+		seen_cutscene = true
+		timer.start(1.7)
+		visible = false
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		return
 	if ownGentle and not equipGentle:
 		gentleButton.text = "Equip"
 	elif ownGentle:
@@ -119,7 +130,8 @@ func bass_button_pressed():
 func fear_button_pressed():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if !ownFear:
-		if fishes >= 20:
+		if fishes >= 5:
+			fishes -= 5
 			ownFear = true
 		else:
 			textbox.clear()
@@ -131,3 +143,10 @@ func fear_button_pressed():
 		equipFear = true
 	elif ownFear and equipFear:
 		equipFear = false
+
+
+func _on_timer_timeout():
+	visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	textbox.clear()
+	textbox.add_text("You have conquered all of the realms of our world, in return I offer this keepsake I have.")

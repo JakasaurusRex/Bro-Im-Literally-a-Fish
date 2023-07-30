@@ -14,6 +14,8 @@ signal bro_fish1
 @onready var larryCam = $Larry/larry_cam
 @onready var signCam = $sign/Camera3D
 @onready var fishingCam = $"Fishing game/FishingCam"
+@onready var hatFish = $hat_fish
+@onready var hatFishAnim = $hat_fish/AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -134,3 +136,22 @@ func _on_fishing_cam_left_fishing():
 	player._on_user_interface_over()
 	UI.interaction()
 	player.approaching_fishing()
+
+
+func _on_fishing_cam_fish_too_fast():
+	UI.fish_too_fast()
+	larryCam.current = true
+
+
+func _on_fishing_cam_caught_fish():
+	UI.nice_catch()
+	larryCam.current = true
+
+
+func _on_shop_all_hats():
+	hatFishAnim.play("turn")
+	var car = carrot.instantiate()
+	car.set_name("hatfish_carrot")
+	add_child(car)
+	car.transform.origin = hatFish.position
+	car.transform.origin.x += 50

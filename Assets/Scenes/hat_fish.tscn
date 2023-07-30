@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqhqddb8ajtxt"]
+[gd_scene load_steps=21 format=3 uid="uid://cqhqddb8ajtxt"]
 
 [ext_resource type="Texture2D" uid="uid://bm25dkqcxvd68" path="res://Assets/Textures/hatfish.png" id="1_2tp14"]
 [ext_resource type="Texture2D" uid="uid://vlp3mcstcxsn" path="res://Assets/Textures/Eyeball-texture.png" id="2_umw4m"]
@@ -172,15 +172,73 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
+[sub_resource type="Animation" id="Animation_tlrou"]
+resource_name = "turn"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.31598, 0), Vector3(0, 0.830777, 0), Vector3(0, 0.830777, 0), Vector3(0, 1.31598, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.3, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.338593, 1.75406, -7.77566e-09), Vector3(-0.338594, 3.11192, 0), Vector3(-0.338594, 3.11192, 0), Vector3(-0.338594, 1.75406, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hktbf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.31598, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.338593, 1.75406, -7.77566e-09)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vuks"]
 _data = {
-"FeeshAction": SubResource("Animation_d4sve")
+"FeeshAction": SubResource("Animation_d4sve"),
+"RESET": SubResource("Animation_hktbf"),
+"turn": SubResource("Animation_tlrou")
 }
 
 [node name="hat_fish" type="Node3D"]
+transform = Transform3D(0.252069, 0, 0.967709, 0, 1, 0, -0.967709, 0, 0.252069, 0, 0, 0)
 
 [node name="Feesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.40513, 0, 0, 0, 0.215783, 0, 0, 0, 0.991735, 0, 0, 0)
+transform = Transform3D(1.535, 0, 0, 0, 0.225, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_l36ku")
 skeleton = NodePath("")
 

@@ -1,18 +1,19 @@
+Timer
+Camera3D
+SubViewport
 RichTextLabel
+ColorRect
 Sprite2D
 AnimationPlayer
-Timer
 CSGSphere3D
 Path3D
 CSGPolygon3D
-Camera3D
 CollisionShape3D
 Area3D
 Node3D
 Node
 MeshInstance3D
 Button
-ColorRect
 ItemList
 AnimationTree
 GPUParticles3D
@@ -29,4 +30,3 @@ VBoxContainer
 DirectionalLight3D
 Marker3D
 OmniLight3D
-SpringArm3D

@@ -11,3 +11,5 @@ res://Assets/Scenes/carrot.tscn
 res://Assets/Scripts/Feesh.gd
 res://Assets/Scripts/start_scene.gd
 res://Assets/Scripts/user_interface.gd
+res://Assets/Scripts/shop.gd
+res://Assets/Scenes/hat_fish.tscn

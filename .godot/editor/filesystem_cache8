@@ -3,14 +3,15 @@ ea4bc82a6ad023ab7ee23ee620429895
 icon.svg::CompressedTexture2D::7987147162593773020::1690339093::1690339101::1::::<><>::
 README.md::TextFile::-1::1690359936::0::1::::<><>::
 ::res://Assets/::1690513353
-::res://Assets/Asperite/::1690743578
-::res://Assets/Models/::1690703284
+::res://Assets/Asperite/::1690746843
+::res://Assets/Models/::1690753678
 bebe_carrot.blend::PackedScene::8139801190784449293::1690425820::1690426238::1::::<><>::uid://dk15r3y1l1be0
 bro_fish.blend::PackedScene::9036329478598715501::1690574627::1690574632::1::::<><>::uid://d15tgbkkmee1n
 campfire.blend::PackedScene::733336376339352033::1690571349::1690572118::1::::<><>::uid://bpsvobchx5h6v
 carrot.blend::PackedScene::943860407999953306::1690425554::1690426238::1::::<><>::uid://1lg25xsqospp
 fancy_fish.blend::PackedScene::1022449552437241532::1690674459::1690674464::1::::<><>::uid://m11gsoyiy022
 feesh.blend::PackedScene::6472020451097794801::1690670829::1690670834::1::::<><>::uid://suqi6fqian0l
+fish.blend::PackedScene::2061607843476043450::1690753678::1690753682::1::::<><>::uid://ye32l761647e::::res://Assets/Textures/fish.png
 fishingrod.blend::PackedScene::4724936918155027262::1690700401::1690700408::1::::<><>::uid://ca52mn0a4djj1
 flower.blend::PackedScene::3752849043636707797::1690517816::1690517878::1::::<><>::uid://ds6lgomsjh4qy
 hatshop.blend::PackedScene::1604344916752777763::1690610986::1690611199::1::::<><>::uid://dqmmv0luoorpi
@@ -26,39 +27,39 @@ room.blend::PackedScene::5910027862993521482::1690518189::1690518552::1::::<><>:
 seaweed.blend::PackedScene::7299013380549632354::1690516000::1690516003::1::::<><>::uid://bwr3cqrd6b0l1
 sign.blend::PackedScene::2612764937267915876::1690694864::1690694868::1::::<><>::uid://d2bsahccixnuc
 terrain.blend::PackedScene::8712493305964009316::1690442353::1690442360::1::::<><>::
-::res://Assets/Scenes/::1690743361
+::res://Assets/Scenes/::1690752255
 bebe_carrot.tscn::PackedScene::3236642573511209934::1690676753::0::1::::<><>::uid://dn78lo31r3agr
 bubbles.tscn::PackedScene::3320188824249226070::1690659270::0::1::::<><>::res://Assets/Scripts/bubbles.gd
-carrot.tscn::PackedScene::84999670666663635::1690743194::0::1::::<><>::uid://nphii6woaeqk::::res://Assets/Models/carrot.blend<>res://Assets/Scripts/carrot.gd
+carrot.tscn::PackedScene::84999670666663635::1690750653::0::1::::<><>::uid://nphii6woaeqk::::res://Assets/Models/carrot.blend<>res://Assets/Scripts/carrot.gd
 fire_particles.tscn::PackedScene::5956268801871771693::1690659270::0::1::::<><>::
-FishingCam.gd::GDScript::-1::1690743361::0::1::::<>Camera3D<>::
-gerald.tscn::PackedScene::7128535475855836233::1690743194::0::1::::<><>::uid://otjuhr6xhsmu::::res://Assets/Models/fancy_fish.blend
+FishingCam.gd::GDScript::-1::1690752156::0::1::::<>Camera3D<>::
+gerald.tscn::PackedScene::7128535475855836233::1690750653::0::1::::<><>::uid://otjuhr6xhsmu::::res://Assets/Models/fancy_fish.blend
 hat_fish.tscn::PackedScene::5911290499753717141::1690666102::0::1::::<><>::uid://bm25dkqcxvd68
 larry.tscn::PackedScene::7334098266809180459::1690677346::0::1::::<><>::uid://dmvxqx0ooam8k
-main_menu.tscn::PackedScene::8725365930457247686::1690743194::0::1::::<><>::res://Assets/Scripts/MainMenu.gd<>uid://ddydqcrfhvm1p::::res://Assets/Textures/press_enter-Sheet.png
-player.tscn::PackedScene::6875950663091862587::1690743194::0::1::::<><>::res://Assets/Scripts/Feesh.gd<>uid://cyhdh4ljemvp6::::res://Assets/Models/feesh.blend<>uid://w4fldkc64mcx::::res://Assets/Models/hatshop.blend
-shop.tscn::PackedScene::751904852378607953::1690743194::0::1::::<><>::res://Assets/Scripts/shop.gd<>uid://i7gro2sfv5m2::::res://Assets/Textures/tophat.png<>uid://y8jiwgdx82oy::::res://Assets/Textures/strawhat.png<>uid://s3uanauvebxq::::res://Assets/Textures/bebe_carrot_icon.png<>uid://cdy0181kr0gom::::res://Assets/Textures/basspro.png<>uid://ckwycvmwq3kym::::res://Assets/Textures/question mark.png<>uid://dc2anp1jjwaqv::::res://Assets/Textures/caughtfeesh.png
-start_scene.tscn::PackedScene::5295787203774337268::1690743361::0::1::::<><>::res://Assets/Scripts/start_scene.gd<>uid://c4705xw6d6u0r::::res://Assets/Scenes/player.tscn<>uid://blwj0elmqrbf5::::res://Assets/Textures/sand.png<>uid://c3v3ot0cf46xy::::res://Assets/Scenes/user_interface.tscn<>uid://bmd4bbbfpa2tm::::res://Assets/Scenes/bebe_carrot.tscn<>uid://cvhp7kmcidma2::::res://Assets/Models/palm.blend<>uid://0y4t0kiqgaqw::::res://Assets/Models/mountain.blend<>uid://db8xxixda7oak::::res://Assets/Models/seaweed.blend<>uid://dy4usos3x4bxi::::res://Assets/Shaders/Water.tres<>uid://dm8tbbn8tm3c2::::res://Assets/Models/room2.blend<>uid://btp541ayeyoev::::res://Assets/Models/flower.blend<>uid://bea7wup1vpq2w::::res://Assets/Shaders/wood.tres<>uid://kph7cc0qf7a0::::res://Assets/Models/campfire.blend<>uid://d10ja5nh7kkvl::::res://Assets/Models/bro_fish.blend<>res://Assets/Scripts/bro_fish.gd<>uid://cq4i420pi4pv6::::res://Assets/Scenes/fire_particles.tscn<>uid://bnkla3yxt4rp3::::res://Assets/Scenes/bubbles.tscn<>res://Assets/Scripts/Intro.gd<>uid://w4fldkc64mcx::::res://Assets/Models/hatshop.blend<>uid://cqhqddb8ajtxt::::res://Assets/Scenes/hat_fish.tscn<>uid://kyh07dp5p3sf::::res://Assets/Scenes/shop.tscn<>uid://dcqxr6eooyu48::::res://Assets/Scenes/larry.tscn<>res://Assets/Scripts/larry.gd<>uid://c8td65ddudiyb::::res://Assets/Scenes/gerald.tscn<>res://Assets/Scenes/FishingCam.gd<>res://Assets/Scripts/gerald.gd<>uid://bdhv4epfnybwe::::res://Assets/Models/sign.blend<>uid://b8k2ax7nac2is::::res://Assets/Models/fishingrod.blend<>uid://cntn6jc3gasl0::::res://Assets/Models/reel.blend
-user_interface.tscn::PackedScene::6783207035660985818::1690743194::0::1::::<><>::res://Assets/Scripts/user_interface.gd<>uid://du5pggi85p230::::res://Assets/Textures/carrot_icon.png<>uid://s3uanauvebxq::::res://Assets/Textures/bebe_carrot_icon.png<>uid://dgc7ic6whaikv::::res://Assets/Textures/number_sheet.png<>uid://dc2anp1jjwaqv::::res://Assets/Textures/caughtfeesh.png
-::res://Assets/Scripts/::1690743341
+main_menu.tscn::PackedScene::8725365930457247686::1690750653::0::1::::<><>::res://Assets/Scripts/MainMenu.gd<>uid://ddydqcrfhvm1p::::res://Assets/Textures/press_enter-Sheet.png
+player.tscn::PackedScene::6875950663091862587::1690750652::0::1::::<><>::res://Assets/Scripts/Feesh.gd<>uid://cyhdh4ljemvp6::::res://Assets/Models/feesh.blend<>uid://w4fldkc64mcx::::res://Assets/Models/hatshop.blend
+shop.tscn::PackedScene::751904852378607953::1690752255::0::1::::<><>::res://Assets/Scripts/shop.gd<>uid://i7gro2sfv5m2::::res://Assets/Textures/tophat.png<>uid://y8jiwgdx82oy::::res://Assets/Textures/strawhat.png<>uid://s3uanauvebxq::::res://Assets/Textures/bebe_carrot_icon.png<>uid://cdy0181kr0gom::::res://Assets/Textures/basspro.png<>uid://ckwycvmwq3kym::::res://Assets/Textures/question mark.png<>uid://dc2anp1jjwaqv::::res://Assets/Textures/caughtfeesh.png
+start_scene.tscn::PackedScene::5295787203774337268::1690752156::0::1::::<><>::res://Assets/Scripts/start_scene.gd<>uid://c4705xw6d6u0r::::res://Assets/Scenes/player.tscn<>uid://blwj0elmqrbf5::::res://Assets/Textures/sand.png<>uid://c3v3ot0cf46xy::::res://Assets/Scenes/user_interface.tscn<>uid://bmd4bbbfpa2tm::::res://Assets/Scenes/bebe_carrot.tscn<>uid://cvhp7kmcidma2::::res://Assets/Models/palm.blend<>uid://0y4t0kiqgaqw::::res://Assets/Models/mountain.blend<>uid://db8xxixda7oak::::res://Assets/Models/seaweed.blend<>uid://dy4usos3x4bxi::::res://Assets/Shaders/Water.tres<>uid://dm8tbbn8tm3c2::::res://Assets/Models/room2.blend<>uid://btp541ayeyoev::::res://Assets/Models/flower.blend<>uid://bea7wup1vpq2w::::res://Assets/Shaders/wood.tres<>uid://kph7cc0qf7a0::::res://Assets/Models/campfire.blend<>uid://d10ja5nh7kkvl::::res://Assets/Models/bro_fish.blend<>res://Assets/Scripts/bro_fish.gd<>uid://cq4i420pi4pv6::::res://Assets/Scenes/fire_particles.tscn<>uid://bnkla3yxt4rp3::::res://Assets/Scenes/bubbles.tscn<>res://Assets/Scripts/Intro.gd<>uid://w4fldkc64mcx::::res://Assets/Models/hatshop.blend<>uid://cqhqddb8ajtxt::::res://Assets/Scenes/hat_fish.tscn<>uid://kyh07dp5p3sf::::res://Assets/Scenes/shop.tscn<>uid://dcqxr6eooyu48::::res://Assets/Scenes/larry.tscn<>res://Assets/Scripts/larry.gd<>uid://c8td65ddudiyb::::res://Assets/Scenes/gerald.tscn<>res://Assets/Scenes/FishingCam.gd<>res://Assets/Scripts/gerald.gd<>uid://bdhv4epfnybwe::::res://Assets/Models/sign.blend<>uid://b8k2ax7nac2is::::res://Assets/Models/fishingrod.blend<>uid://cntn6jc3gasl0::::res://Assets/Models/reel.blend<>uid://fdb7vyhbp3bk::::res://Assets/Textures/esc_key.png<>uid://sr4i6mtbweoe::::res://Assets/Textures/gauge.png<>uid://dgc7ic6whaikv::::res://Assets/Textures/number_sheet.png<>uid://dc2anp1jjwaqv::::res://Assets/Textures/caughtfeesh.png<>uid://c1weerbb8hjs4::::res://Assets/Textures/completion_gauge-Sheet.png<>uid://ditboixnmb44r::::res://Assets/Textures/cranks per second.png
+user_interface.tscn::PackedScene::6783207035660985818::1690750652::0::1::::<><>::res://Assets/Scripts/user_interface.gd<>uid://du5pggi85p230::::res://Assets/Textures/carrot_icon.png<>uid://s3uanauvebxq::::res://Assets/Textures/bebe_carrot_icon.png<>uid://dgc7ic6whaikv::::res://Assets/Textures/number_sheet.png<>uid://dc2anp1jjwaqv::::res://Assets/Textures/caughtfeesh.png
+::res://Assets/Scripts/::1690752255
 bebe_carrot.gd::GDScript::-1::1690432673::0::1::::<>Area3D<>::
 bro_fish.gd::GDScript::-1::1690580114::0::1::::<>Node3D<>::
 bubbles.gd::GDScript::-1::1690603062::0::1::::<>Node3D<>::
 CameraJoint.gd::GDScript::-1::1690349723::0::1::::<>SpringArm3D<>::
 carrot.gd::GDScript::-1::1690658434::0::1::::<>Area3D<>::
-Feesh.gd::GDScript::-1::1690740961::0::1::::<>CharacterBody3D<>::
+Feesh.gd::GDScript::-1::1690744656::0::1::::<>CharacterBody3D<>::
 gerald.gd::GDScript::-1::1690682383::0::1::::<>Node3D<>::
 Intro.gd::GDScript::-1::1690606578::0::1::::<>Camera3D<>::
 larry.gd::GDScript::-1::1690675325::0::1::::<>Node3D<>::
 MainMenu.gd::GDScript::-1::1690606407::0::1::::<>Control<>::
-shop.gd::GDScript::-1::1690674780::0::1::::<>Control<>::
-start_scene.gd::GDScript::-1::1690743341::0::1::::<>Node3D<>::
-user_interface.gd::GDScript::-1::1690743341::0::1::::<>Control<>::
+shop.gd::GDScript::-1::1690752255::0::1::::<>Control<>::
+start_scene.gd::GDScript::-1::1690749274::0::1::::<>Node3D<>::
+user_interface.gd::GDScript::-1::1690749059::0::1::::<>Control<>::
 ::res://Assets/Shaders/::1690742776
 Water.gdshader::Shader::-1::1690513331::0::1::::<><>::
 Water.tres::ShaderMaterial::8904908501842882162::1690742776::0::1::::<><>::
 wood.tres::StandardMaterial3D::2669159364328727348::1690738471::0::1::::<><>::
-::res://Assets/Textures/::1690743585
+::res://Assets/Textures/::1690753463
 bark.001.png::CompressedTexture2D::3085341831190184756::1690439586::1690522819::1::::<><>::
 basshat.png::CompressedTexture2D::4347809724631256568::1690670155::1690670345::1::::<><>::
 basspro.png::CompressedTexture2D::5034519093771954328::1690661161::1690661369::1::::<><>::
@@ -70,6 +71,8 @@ campfirewood.png::CompressedTexture2D::3477712251762358031::1690570958::16905721
 carrot.png::CompressedTexture2D::1848032220346326981::1690425349::1690426238::1::::<><>::
 carrot_icon.png::CompressedTexture2D::8625892055155287477::1690426203::1690426235::1::::<><>::
 caughtfeesh.png::CompressedTexture2D::7355401981472723605::1690664064::1690664114::1::::<><>::
+completion_gauge-Sheet.png::CompressedTexture2D::6643418518242622157::1690746502::1690746508::1::::<><>::
+cranks per second.png::CompressedTexture2D::7760082151942206087::1690746854::1690746858::1::::<><>::
 cranks.png::CompressedTexture2D::7669896869807994891::1690703175::1690703284::1::::<><>::
 door.png::CompressedTexture2D::886499788283650229::1690521126::1690521136::1::::<><>::
 esc_key.png::CompressedTexture2D::357256354235729668::1690743585::1690743591::1::::<><>::
@@ -80,10 +83,12 @@ feesh-texture.png::CompressedTexture2D::1305674135486830929::1690339639::1690340
 feesh_Eyeball-texture.png::CompressedTexture2D::2168131528619474755::1690436413::1690522819::1::::<><>::
 feesh_eyesmall.png::CompressedTexture2D::3186558757556267338::1690436413::1690522819::1::::<><>::
 feesh_feesh-texture.png::CompressedTexture2D::2805170295562925024::1690436413::1690522819::1::::<><>::
+fish.png::CompressedTexture2D::1694538679196998320::1690753437::1690753463::1::::<><>::
 fishing rod.png::CompressedTexture2D::4836434209802093336::1690673138::1690674464::1::::<><>::
 floor.png::CompressedTexture2D::262821246165727691::1690521134::1690521136::1::::<><>::
 flower.png::CompressedTexture2D::1757617041924634040::1690517774::1690517878::1::::<><>::
 frame.png::CompressedTexture2D::5485202896402382077::1690521121::1690521136::1::::<><>::
+gauge.png::CompressedTexture2D::1300270334072052368::1690746436::1690746508::1::::<><>::
 hatfish.png::CompressedTexture2D::3286252423946620835::1690611322::1690611324::1::::<><>::
 hatshop.png::CompressedTexture2D::8307823518926328794::1690610961::1690611199::1::::<><>::
 lamphead.png::CompressedTexture2D::6283475985576601259::1690521113::1690521136::1::::<><>::

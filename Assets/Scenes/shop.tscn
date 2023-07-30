@@ -257,7 +257,7 @@ offset_top = 59.5
 offset_right = 283.0
 offset_bottom = 77.5
 theme_override_font_sizes/normal_font_size = 10
-text = "20x"
+text = "5x"
 fit_content = true
 scroll_active = false
 

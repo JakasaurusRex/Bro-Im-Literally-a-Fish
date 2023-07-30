@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://chpk3u2gdq7rc"]
+[gd_scene load_steps=88 format=3 uid="uid://chpk3u2gdq7rc"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/start_scene.gd" id="1_1a2iq"]
 [ext_resource type="PackedScene" uid="uid://c4705xw6d6u0r" path="res://Assets/Scenes/player.tscn" id="1_bk3db"]
@@ -30,6 +30,12 @@
 [ext_resource type="PackedScene" uid="uid://b8k2ax7nac2is" path="res://Assets/Models/fishingrod.blend" id="27_f66kx"]
 [ext_resource type="PackedScene" uid="uid://cntn6jc3gasl0" path="res://Assets/Models/reel.blend" id="28_6j3c5"]
 [ext_resource type="Texture2D" uid="uid://fdb7vyhbp3bk" path="res://Assets/Textures/esc_key.png" id="29_k73vy"]
+[ext_resource type="Texture2D" uid="uid://sr4i6mtbweoe" path="res://Assets/Textures/gauge.png" id="30_m1yec"]
+[ext_resource type="Texture2D" uid="uid://dgc7ic6whaikv" path="res://Assets/Textures/number_sheet.png" id="31_s7r6r"]
+[ext_resource type="Texture2D" uid="uid://dc2anp1jjwaqv" path="res://Assets/Textures/caughtfeesh.png" id="32_ne5n4"]
+[ext_resource type="Texture2D" uid="uid://c1weerbb8hjs4" path="res://Assets/Textures/completion_gauge-Sheet.png" id="33_amiai"]
+[ext_resource type="Texture2D" uid="uid://ditboixnmb44r" path="res://Assets/Textures/cranks per second.png" id="34_4g4g2"]
+[ext_resource type="PackedScene" uid="uid://4mwm6ivpe1ba" path="res://Assets/Models/fish.blend" id="35_ynwp3"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_bnf0c"]
 subdivide_width = 200
@@ -495,6 +501,9 @@ visible = false
 [node name="Shop" parent="." instance=ExtResource("22_5ofyr")]
 visible = false
 
+[node name="Timer" type="Timer" parent="Shop"]
+one_shot = true
+
 [node name="Gerald" parent="." instance=ExtResource("25_ynrhp")]
 transform = Transform3D(7.01, 0, 0, 0, 7.01, 0, 0, 0, 7.01, -519.781, 23.3849, 234.677)
 script = ExtResource("26_n6ldq")
@@ -523,10 +532,13 @@ transform = Transform3D(1, 0, 2.98023e-07, 0, 0.999999, 0, -2.98023e-07, 0, 1, 0
 shape = SubResource("BoxShape3D_jlqq3")
 
 [node name="hat_fish" parent="." instance=ExtResource("21_w22eu")]
-transform = Transform3D(1.6757, -0.255318, 6.79167, 0.29921, 6.99105, 0.188989, -6.78988, 0.245064, 1.68448, 195.745, 28.2269, 513.089)
+transform = Transform3D(1.76448, 0, 6.77396, 0, 7, 0, -6.77396, 0, 1.76448, 195.745, 28.2269, 513.089)
+
+[node name="Feesh" parent="hat_fish" index="0"]
+transform = Transform3D(1.325, 0, 0, 0, 0.215, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="hat_fish"]
-transform = Transform3D(-0.0260336, -0.0466569, 0.13249, -1.04774e-09, 0.134746, 0.0474515, -0.140465, 0.00864734, -0.0245555, 3.64849, 0.505525, -0.913113)
+transform = Transform3D(-0.0260336, -0.0466569, 0.13249, -1.04774e-09, 0.134746, 0.0474516, -0.140465, 0.00864733, -0.0245555, 3.64849, 0.505525, -0.913113)
 fov = 103.0
 
 [node name="Area3D" type="Area3D" parent="hat_fish"]
@@ -1542,7 +1554,6 @@ fov = 103.0
 script = ExtResource("26_ansxs")
 line_rad = 0.03
 line_res = 180
-mouse_sens = 0.1
 bobbed = true
 lost_fish = true
 
@@ -1600,6 +1611,103 @@ text = "To stop fishing"
 fit_content = true
 scroll_active = false
 
+[node name="Fishing Gauge" type="Sprite2D" parent="Fishing game/FishingCam"]
+visible = false
+position = Vector2(116.5, 359.5)
+scale = Vector2(3.67188, 3.67188)
+texture = ExtResource("30_m1yec")
+
+[node name="Num" type="Sprite2D" parent="Fishing game/FishingCam/Fishing Gauge"]
+position = Vector2(-12.3915, 2.85956)
+scale = Vector2(0.13617, 0.13617)
+texture = ExtResource("31_s7r6r")
+hframes = 10
+
+[node name="FishIcon" type="Sprite2D" parent="Fishing game/FishingCam/Fishing Gauge"]
+position = Vector2(0.567946, -10.1161)
+rotation = -0.858702
+scale = Vector2(0.350548, 0.350548)
+texture = ExtResource("32_ne5n4")
+
+[node name="completion_left" type="Sprite2D" parent="Fishing game/FishingCam/Fishing Gauge"]
+position = Vector2(-8.85106, 14.0255)
+scale = Vector2(0.225532, 0.225532)
+texture = ExtResource("33_amiai")
+hframes = 2
+frame = 1
+
+[node name="completion_middle" type="Sprite2D" parent="Fishing game/FishingCam/Fishing Gauge"]
+position = Vector2(0.136169, 14.0255)
+scale = Vector2(0.225532, 0.225532)
+texture = ExtResource("33_amiai")
+hframes = 2
+frame = 1
+
+[node name="completion_right" type="Sprite2D" parent="Fishing game/FishingCam/Fishing Gauge"]
+position = Vector2(9.12341, 14.0255)
+scale = Vector2(0.225532, 0.225532)
+texture = ExtResource("33_amiai")
+hframes = 2
+frame = 1
+
+[node name="text" type="Sprite2D" parent="Fishing game/FishingCam/Fishing Gauge"]
+position = Vector2(5.31064, 3.13193)
+scale = Vector2(0.208512, 0.208512)
+texture = ExtResource("34_4g4g2")
+
+[node name="text2" type="Sprite2D" parent="Fishing game/FishingCam/Fishing Gauge"]
+position = Vector2(124.596, 1.468)
+scale = Vector2(0.208512, 0.208512)
+texture = ExtResource("34_4g4g2")
+
+[node name="ColorRect" type="ColorRect" parent="Fishing game/FishingCam/Fishing Gauge"]
+z_index = -1800
+offset_left = 96.817
+offset_top = -7.7617
+offset_right = 139.817
+offset_bottom = 11.2383
+color = Color(0.254902, 0.254902, 0.254902, 0.447059)
+
+[node name="Speed" type="RichTextLabel" parent="Fishing game/FishingCam/Fishing Gauge"]
+offset_left = 99.2681
+offset_top = -3.94894
+offset_right = 110.268
+offset_bottom = 7.05106
+theme_override_font_sizes/normal_font_size = 7
+text = "1
+"
+fit_content = true
+scroll_active = false
+
+[node name="You caught" type="ColorRect" parent="Fishing game/FishingCam"]
+visible = false
+offset_left = 223.0
+offset_top = 115.0
+offset_right = 406.0
+offset_bottom = 338.0
+color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fishing game/FishingCam/You caught"]
+position = Vector2(94, 88.775)
+
+[node name="Viewport" type="SubViewport" parent="Fishing game/FishingCam/You caught"]
+size = Vector2i(150, 150)
+
+[node name="fish" parent="Fishing game/FishingCam/You caught/Viewport" instance=ExtResource("35_ynwp3")]
+transform = Transform3D(2.92619, 5.79288, 2.53215e-07, 0, -2.83687e-07, 6.49, 5.79288, -2.92619, -1.27908e-07, -4257.36, 39.9072, -4.93399)
+
+[node name="Camera3D" type="Camera3D" parent="Fishing game/FishingCam/You caught/Viewport"]
+transform = Transform3D(0.999874, 1.2818e-09, 0.0158629, -0.0074858, 0.88165, 0.471845, -0.0139856, -0.471905, 0.881539, -4257.36, 54.5551, 13.1471)
+fov = 103.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Fishing game/FishingCam/You caught"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 173.0
+offset_right = 168.0
+offset_bottom = 213.0
+text = "You caught a fish!"
+
 [node name="sign" parent="." instance=ExtResource("27_erkqs")]
 transform = Transform3D(-7.64564, 0, -3.6796, 0, 8.485, 0, 3.6796, 0, -7.64564, 483.65, 6.51029, 423.027)
 
@@ -1654,7 +1762,9 @@ fov = 103.0
 [connection signal="body_shape_entered" from="Bebe Carrots/bebe_carrot23" to="Player" method="_on_bebe_carrot_body_shape_entered"]
 [connection signal="body_shape_entered" from="Bebe Carrots/bebe_carrot20" to="Player" method="_on_bebe_carrot_body_shape_entered"]
 [connection signal="animation_finished" from="Intro/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="all_hats" from="Shop" to="." method="_on_shop_all_hats"]
 [connection signal="pressed" from="Shop/Close Button" to="." method="closed_shop_button"]
+[connection signal="timeout" from="Shop/Timer" to="Shop" method="_on_timer_timeout"]
 [connection signal="animation_finished" from="Gerald/AnimationPlayer" to="Gerald" method="_on_animation_player_animation_finished"]
 [connection signal="body_shape_entered" from="Gerald/Area3D" to="." method="in_gerald_area"]
 [connection signal="body_shape_exited" from="Gerald/Area3D" to="." method="leaving_gerald_area"]
@@ -1664,6 +1774,8 @@ fov = 103.0
 [connection signal="body_shape_exited" from="hat_fish/Area3D" to="." method="on_shop_fish_exit"]
 [connection signal="body_shape_entered" from="Fishing game/Area3D" to="." method="entered_fishing"]
 [connection signal="body_shape_exited" from="Fishing game/Area3D" to="." method="left_fishing"]
+[connection signal="caught_fish" from="Fishing game/FishingCam" to="." method="_on_fishing_cam_caught_fish"]
+[connection signal="fish_too_fast" from="Fishing game/FishingCam" to="." method="_on_fishing_cam_fish_too_fast"]
 [connection signal="left_fishing" from="Fishing game/FishingCam" to="." method="_on_fishing_cam_left_fishing"]
 [connection signal="lost_fish_signal" from="Fishing game/FishingCam" to="." method="_on_fishing_cam_lost_fish_signal"]
 [connection signal="scared_fish_signal" from="Fishing game/FishingCam" to="." method="_on_fishing_cam_scared_fish_signal"]
@@ -1682,6 +1794,8 @@ fov = 103.0
 [editable path="Gerald/fancy_fish"]
 [editable path="Larry"]
 [editable path="Larry/larry"]
+[editable path="hat_fish"]
+[editable path="hat_fish/hatshop"]
 [editable path="bro_fish"]
 [editable path="Surroundings/Flowers/flower"]
 [editable path="Surroundings/Flowers/flower2"]

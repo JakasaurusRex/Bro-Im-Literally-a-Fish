@@ -10,7 +10,7 @@ signal change_to_larry
 
 @onready var textrect = $ColorRect2
 @onready var textbox = $ColorRect2/RichTextLabel
-
+@onready var player = $"../Player"
 var bro_fish1 = ["Bro I'm literally a fish", "bro", "bro", "why is there a fire underwater", "i dunno", "go back to collecting carrots bro so you can get us outta here"]
 var bro_fish1_index = 0
 
@@ -36,6 +36,7 @@ var npc_bool = false
 
 var larry1_text = ["Hey kid, are ye lookin to fish?", "Aren't we underwater", "Ye what abouts that", "Nevermind...", "Have my spare rod I have. All ya hafta do is walk up to my dock over here, cast your rod and wait for a bite.", "What is gonna bite the hook", "Once you have a bite yer gonna wanna reel er in with the crank, make sure to reel the same speed as the fish or you'll lose em", "Wait I'm catching fish", "If you have any questions, I can't answer them but bring me yer haul and I'll give you a couple bebe carrots for them", "Yarp"]
 var larry1_index = 0
+var caught_fish = false
 
 @export var messed_up_fish = false
 
@@ -49,7 +50,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if textrect.visible and Input.is_action_just_pressed("back"):
+		if(caught_fish):
+			caught_fish = false
+			player.bebe_carrots += 2
+			emit_signal("over")
+			return
 	if textrect.visible and Input.is_action_just_pressed("enter"):
+		if(caught_fish):
+			caught_fish = false
+			player.fishes += 1
+			emit_signal("over")
+			return
 		if(messed_up_fish):
 			messed_up_fish = false
 			emit_signal("over")
@@ -130,6 +142,20 @@ func update_carots(carrots):
 	else:
 		$carrotLeftNum.frame = 0
 		$carrotRightNum.frame = carrots % 10
+
+func update_fishes(fishes):
+	if fishes > 100:
+		$fishLeftNum.frame = fishes / 100
+		$fishMiddleNum.frame = fishes % 100 / 10
+		$fishRightNum.frame = fishes % 100 % 10
+	elif fishes > 10:
+		$fishLeftNum.frame = 0
+		$fishMiddleNum.frame = fishes / 10
+		$fishRightNum.frame = fishes % 10
+	else:
+		$fishLeftNum.frame = 0
+		$fishMiddleNum.frame = 0
+		$fishRightNum.frame = fishes % 10
 
 func transition():
 	print("transitioning")
@@ -226,3 +252,14 @@ func scared_fish():
 	textbox.clear()
 	textbox.add_text("Ya scared da fish, only start reely reeling when you get the fish on the hook or it'll scram")
 	
+func fish_too_fast():
+	messed_up_fish = true
+	textrect.visible = true
+	textbox.clear()
+	textbox.add_text("Ya lost da fish, try crankin the reel the same speed as the fish")
+	
+func nice_catch():
+	caught_fish = true
+	textrect.visible = true
+	textbox.clear()
+	textbox.add_text("Nice catch kiddo, you can keep the fish, or sell it to me for 2 bebe carrots, I'm a little hungry (s to sell, enter to keep)")
