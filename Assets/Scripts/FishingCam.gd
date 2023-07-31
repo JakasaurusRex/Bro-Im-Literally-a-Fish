@@ -10,7 +10,7 @@ signal fish_too_fast
 @export var line_res = 10
 
 @export var isFishing = true
-@export var mouse_sens = 0.1
+@export var mouse_sens = 0.3
 
 @onready var reel = $reel/Cylinder_002
 @onready var timer = $FishTimer
@@ -41,6 +41,11 @@ signal fish_too_fast
 @onready var you_caught = $"You caught"
 @onready var fish = $"You caught/Viewport/fish"
 @onready var fish_sprite = $"You caught/Sprite2D"
+@onready var reeling_sfx = $Reeling
+@onready var reeling_done = $"Finished Reeling"
+@onready var nice_catch_sfx = $niceCatch
+@onready var fishingbg = $fishingbg
+
 var crank_time = 0
 var crank_amount = 0
 var spin_start_time = 0
@@ -56,6 +61,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if on_caught and Input.is_action_just_pressed("enter"):
+			emit_signal("caught_fish")
+			print("here")
+			visible = false
 	if visible and Input.is_action_just_pressed("esc"):
 		emit_signal("left_fishing")
 		visible = false
@@ -83,9 +92,7 @@ func _process(delta):
 				visible = false
 		elif(on_caught):
 			fish.rotation.y += deg_to_rad(1)
-			if Input.is_action_just_pressed("interact"):
-				emit_signal("caught_fish")
-				visible = false
+			
 	var circle = PackedVector2Array()
 	for degree in line_res:
 		line_rad = 0.03
@@ -106,7 +113,7 @@ func _unhandled_input(event):
 		else:
 			total_rotation = abs(rad_to_deg(reel.rotation.y))
 		print(total_rotation)
-		if(spinThisRot == false and total_rotation >= 350):
+		if(spinThisRot == false and total_rotation >= 345):
 			total_spins += 1
 			total_rotation = 0
 			spinThisRot = true
@@ -132,6 +139,8 @@ func _on_visibility_changed():
 		esc_text.visible = true
 		lost_fish = false
 		scared_fish = false
+		reeling_sfx.play()
+		fishingbg.play()
 	else:
 		esc.visible = false
 		esc_text.visible = false
@@ -145,6 +154,9 @@ func _on_visibility_changed():
 		fish.visible = false
 		you_caught.visible = false
 		on_caught = false
+		reeling_sfx.stop()
+		reeling_done.stop()
+		fishingbg.stop()
 
 func _on_fish_timer_timeout():
 	if(visible == false):
@@ -194,8 +206,20 @@ func update_gauge():
 		on_hook = false
 
 func caught():
+	reeling_sfx.stop()
+	reeling_done.play()
+	nice_catch_sfx.play()
 	on_hook = false
 	fish.visible = true
 	you_caught.visible = true
 	fish_sprite.texture = viewport.get_texture()
 	
+
+
+func _on_reeling_finished():
+	if(!on_caught):
+		reeling_sfx.play()
+
+
+func _on_fishingbg_finished():
+	fishingbg.play()

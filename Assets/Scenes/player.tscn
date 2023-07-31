@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dp558"]
 radius = 0.96599
-height = 1.93198
+height = 2.35134
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 collision_layer = 66313
@@ -32,10 +32,7 @@ far = 200.0
 [node name="feesh" parent="Pivot" instance=ExtResource("2_0m3ef")]
 transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 0, 0, 0)
 
-[node name="Sphere_001" parent="Pivot/feesh" index="8"]
-visible = false
-
-[node name="Cylinder" parent="Pivot/feesh" index="9"]
+[node name="Sphere_001" parent="Pivot/feesh" index="10"]
 visible = false
 
 [node name="hatshop" parent="Pivot/feesh" instance=ExtResource("3_7rutf")]
@@ -46,6 +43,9 @@ visible = false
 visible = false
 
 [node name="Cube_001" parent="Pivot/feesh/hatshop" index="2"]
+visible = false
+
+[node name="Cylinder" parent="Pivot/feesh" index="12"]
 visible = false
 
 [editable path="Pivot/feesh"]

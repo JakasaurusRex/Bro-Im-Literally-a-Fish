@@ -26,14 +26,26 @@ var _snapVector = Vector3.ZERO
 
 @onready var shop = $"../Shop"
 @onready var ui = $"../UserInterface"
-
+@onready var fishing_rod = $Pivot/fishingrod
 @onready var gerald_prog = 0
+@onready var jumpSFX = $Jump
+@onready var bebeSfx = $Eatbebe
+@onready var carrotSfx = $Eatbig
+@onready var fishingSfx = $Fishing
+@onready var BG = $BG
+@onready var leg1 = $Pivot/feesh/Leg1
+@onready var leg2 = $Pivot/feesh/Leg2
+
+@export var flying = false
+
 var gerald = false
 
 var shop_fish = false
 var sign = false
 var larry = false
 var fishing = false
+var sean = false
+var leg_scene = false
 
 @export var currentHat = ""
 
@@ -41,14 +53,29 @@ var fishing = false
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	update_hat()
+	BG.play()
+	leg1.visible = false
+	leg2.visible = false
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and canMove:
 		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
 		_springArm.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
 		_springArm.rotation.x = clamp(_springArm.rotation.x, deg_to_rad(-75), deg_to_rad(75))
+		if(leg_scene == false and carots == 4):
+			leg1.visible = true
+			leg2.visible = true
+			jumpStrength = 150
+			leg_scene = true
+			canMove = false
+			velocity = Vector3.ZERO
+			$".."._on_user_interface_change_to_feesh()
+			ui.leg_scene()
 	
 func _physics_process(delta):
+	if(flying):
+		velocity.y += 3
+		scale = Vector3(15, 15, 15)
 	if Input.is_action_just_pressed("esc"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if Input.is_action_just_pressed("click"):
@@ -63,9 +90,18 @@ func _physics_process(delta):
 		talked_to_larry()
 	elif fishing and Input.is_action_just_pressed("interact"):
 		fishing = false
+		fishingSfx.play()
 		ui.leaving_interaction()
 		opened_fishing()
-		
+		BG.stop()
+	elif sean and Input.is_action_just_pressed("interact"):
+		talk_to_sean()
+	
+	if readyToFish:
+		fishing_rod.visible = true
+	else:
+		fishing_rod.visible = false
+	
 	var input_vector = get_input_vector()
 	var direction = get_direction(input_vector)
 	apply_movement(input_vector, direction, delta)
@@ -121,6 +157,7 @@ func jump():
 		return
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
+			jumpSFX.play()
 			velocity.y = jumpStrength
 		elif Input.is_action_just_released("jump") and velocity.y > jumpStrength/2:
 			velocity.y = jumpStrength/2
@@ -156,6 +193,8 @@ func update_hat():
 func _on_bebe_carrot_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	bebe_carrots += 1
 	ui.update_bebes(bebe_carrots)
+	bebeSfx.play()
+	
 	
 
 	
@@ -188,7 +227,7 @@ func _on_user_interface_over():
 	
 	
 func eat_carrot(carrot):
-	print("eating carrot")
+	carrotSfx.play()
 	canMove = false
 	$"Cutscene Feesh".current = true
 	carrot.transform.origin = position
@@ -228,7 +267,6 @@ func entered_shop():
 func left_shop():
 	canMove = true
 	$SpringArm/Camera3D.current = true
-	ui.update_bebes(carots)
 	ui.visible = true
 	shop.visible = false
 	if shop.equipGentle:
@@ -242,9 +280,10 @@ func left_shop():
 	else:
 		currentHat = ""
 		
-	
 	bebe_carrots = shop.bebes
 	fishes = shop.fishes
+	ui.update_bebes(bebe_carrots)
+	ui.update_fishes(fishes)
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	update_hat()
 	
@@ -255,6 +294,7 @@ func leaving_gerald():
 	gerald = false
 	
 func talked_to_gerald():
+	ui.npc_bool = true
 	canMove = false
 	velocity = Vector3.ZERO
 	if(gerald_prog == 2):
@@ -310,3 +350,20 @@ func opened_fishing():
 	canMove = false
 	velocity = Vector3.ZERO
 	$".."._on_user_interface_change_to_fishing()
+
+
+func _on_bg_finished():
+	BG.play()
+
+func entered_sean():
+	sean = true
+	
+func leaving_sean():
+	sean = false
+
+func talk_to_sean():
+	canMove = false
+	velocity = Vector3.ZERO
+	$"..".swap_to_sean()
+	ui.talked_to_sean()
+	ui.npc_bool = true

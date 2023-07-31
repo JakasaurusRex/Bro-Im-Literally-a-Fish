@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="Bro Im Literally a Fish"
+config/description="Bro I am quite literally a fish"
 run/main_scene="res://Assets/Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://Assets/Textures/A-Christian-Game.png"
+config/icon="res://Assets/Textures/feesh.png"
 
 [display]
 

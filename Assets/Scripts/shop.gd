@@ -2,10 +2,10 @@ extends Control
 
 signal all_hats
 
-@export var ownGentle = true
-@export var ownStraw = true
-@export var ownBass = true
-@export var ownFear = true
+@export var ownGentle = false
+@export var ownStraw = false
+@export var ownBass = false
+@export var ownFear = false
 
 @onready var gentleButton = $Items/Gentle/Button
 @onready var strawButton = $Items/Straw/Button
@@ -18,6 +18,8 @@ signal all_hats
 @export var equipStraw = false
 @export var equipBass = false
 @export var equipFear = false 
+
+@onready var sfx = $"Shop sfx"
 
 @export var bebes = 0
 @export var fishes = 0
@@ -70,6 +72,7 @@ func _process(delta):
 		
 
 func gentle_button_pressed():
+	sfx.play()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if !ownGentle:
 		if bebes >= 20:
@@ -89,6 +92,7 @@ func gentle_button_pressed():
 		
 
 func straw_button_pressed():
+	sfx.play()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if !ownStraw:
 		if bebes >= 32:
@@ -110,6 +114,7 @@ func straw_button_pressed():
 
 
 func bass_button_pressed():
+	sfx.play()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if !ownBass:
 		if bebes >= 10:
@@ -128,6 +133,7 @@ func bass_button_pressed():
 
 
 func fear_button_pressed():
+	sfx.play()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if !ownFear:
 		if fishes >= 5:

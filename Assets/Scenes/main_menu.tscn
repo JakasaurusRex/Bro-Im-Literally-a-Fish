@@ -1,7 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwkvrcn4han3k"]
+[gd_scene load_steps=11 format=3 uid="uid://dwkvrcn4han3k"]
 
 [ext_resource type="Script" path="res://Assets/Scripts/MainMenu.gd" id="1_kq2li"]
 [ext_resource type="Texture2D" uid="uid://ddydqcrfhvm1p" path="res://Assets/Textures/press_enter-Sheet.png" id="2_7ifmc"]
+[ext_resource type="Texture2D" uid="uid://urimuwy7sc63" path="res://Assets/Textures/title.png" id="3_bexet"]
+[ext_resource type="PackedScene" uid="uid://4mwm6ivpe1ba" path="res://Assets/Models/fish.blend" id="4_l1ivh"]
+[ext_resource type="Script" path="res://Assets/Models/fish.gd" id="5_ae12x"]
+[ext_resource type="AudioStream" uid="uid://b7vh8aquk54uj" path="res://Assets/Audio/menu bg.wav" id="6_hm1gc"]
+
+[sub_resource type="Gradient" id="Gradient_qag8t"]
+offsets = PackedFloat32Array(0, 0.484706, 1)
+colors = PackedColorArray(0, 0, 1, 1, 0.526864, 0.862116, 0.999596, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gkx6v"]
+gradient = SubResource("Gradient_qag8t")
+fill_from = Vector2(0.7, 1)
+fill_to = Vector2(0.3, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebsvx"]
+albedo_color = Color(0.262745, 0.411765, 0.905882, 1)
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w017s"]
+albedo_color = Color(0.262745, 0.411765, 0.905882, 1)
 
 [node name="Main menu" type="Control"]
 layout_mode = 3
@@ -13,12 +34,51 @@ grow_vertical = 2
 script = ExtResource("1_kq2li")
 
 [node name="Text" type="Sprite2D" parent="."]
-position = Vector2(189, 339)
-scale = Vector2(1.405, 1.405)
+position = Vector2(130, 393)
+scale = Vector2(1.06917, 1.06917)
 texture = ExtResource("2_7ifmc")
 hframes = 2
 region_rect = Rect2(42, 110.5, 234, 95)
 
 [node name="Timer" type="Timer" parent="Text"]
 
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(321, 239)
+texture = ExtResource("3_bexet")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(320, 240)
+scale = Vector2(9.96875, 7.46875)
+texture = SubResource("GradientTexture2D_gkx6v")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(476.97, 417.645)
+scale = Vector2(0.325, 0.325)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="fish" parent="SubViewport" instance=ExtResource("4_l1ivh")]
+transform = Transform3D(0.187141, 0, 0.982333, 0, 1, 0, -0.982333, 0, 0.187141, 0, 0, 0.678135)
+script = ExtResource("5_ae12x")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.759, -0.658, 0.935)
+fov = 103.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.33725, 0, 0)
+size = Vector3(2.9779, 16.0488, 24.4774)
+material = SubResource("StandardMaterial3D_ebsvx")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57847, -16.8033, 0)
+size = Vector3(24.0852, 8.83021, 30.6011)
+material = SubResource("StandardMaterial3D_w017s")
+
+[node name="menu_bg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_hm1gc")
+volume_db = -12.133
+
 [connection signal="timeout" from="Text/Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="menu_bg" to="." method="_on_menu_bg_finished"]
